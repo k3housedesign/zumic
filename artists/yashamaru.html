@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VANSHOOT夜叉丸 - 超night快調 | b.p.o Video Store</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 30%, #16213e 70%, #0f0f23 100%);
+      color: #ffffff;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* CRT scanlines effect */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 255, 100, 0.03) 2px,
+        rgba(0, 255, 100, 0.03) 4px
+      );
+      pointer-events: none;
+      z-index: 1000;
+      animation: flicker 0.15s infinite linear alternate;
+    }
+
+    @keyframes flicker {
+      0% { opacity: 1; }
+      100% { opacity: 0.97; }
+    }
+
+    /* Neon grid background */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: gridMove 20s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes gridMove {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Navigation */
+    nav {
+      margin-bottom: 2rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #00ffff;
+      text-decoration: none;
+      font-family: 'Orbitron', monospace;
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
+      border: 1px solid rgba(0, 255, 255, 0.3);
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.5);
+      transition: all 0.3s ease;
+    }
+
+    .back-link:hover {
+      background: rgba(0, 255, 255, 0.1);
+      border-color: #00ffff;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+
+    /* Artist header */
+    .artist-header {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding: 2rem;
+      background: rgba(0, 0, 0, 0.7);
+      border: 2px solid #9400d3;
+      border-radius: 15px;
+      box-shadow: 0 0 30px rgba(148, 0, 211, 0.3);
+    }
+
+    .artist-name {
+      font-family: 'Orbitron', monospace;
+      font-size: 2.5rem;
+      color: #9400d3;
+      text-shadow: 0 0 20px #9400d3;
+      margin-bottom: 0.5rem;
+    }
+
+    .song-title {
+      font-size: 1.8rem;
+      color: #da70d6;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 15px #da70d6;
+    }
+
+    .artist-description {
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Album cover and audio section */
+    .media-section {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 2rem;
+      margin-bottom: 3rem;
+      align-items: start;
+    }
+
+    @media (max-width: 768px) {
+      .media-section {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .album-cover {
+      width: 300px;
+      height: 300px;
+      border-radius: 15px;
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      border: 3px solid rgba(148, 0, 211, 0.5);
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      margin: 0 auto;
+    }
+
+    .album-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .album-cover.placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 6rem;
+      background: linear-gradient(135deg, 
+        rgba(148, 0, 211, 0.2), 
+        rgba(218, 112, 214, 0.2),
+        rgba(148, 0, 211, 0.2)
+      );
+    }
+
+    .audio-section {
+      padding: 1.5rem;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(148, 0, 211, 0.3);
+      border-radius: 15px;
+    }
+
+    .audio-player {
+      margin-bottom: 1.5rem;
+    }
+
+    audio {
+      width: 100%;
+      height: 50px;
+      border-radius: 25px;
+    }
+
+    .track-info {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    /* Lyrics section */
+    .lyrics-section {
+      background: rgba(0, 0, 0, 0.8);
+      border: 2px solid rgba(218, 112, 214, 0.5);
+      border-radius: 15px;
+      padding: 2.5rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 0 30px rgba(218, 112, 214, 0.2);
+    }
+
+    .lyrics-title {
+      font-family: 'Orbitron', monospace;
+      font-size: 1.5rem;
+      color: #da70d6;
+      text-align: center;
+      margin-bottom: 2rem;
+      text-shadow: 0 0 15px #da70d6;
+    }
+
+    .lyrics-content {
+      white-space: pre-line;
+      line-height: 2;
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.9);
+      text-align: center;
+      margin: 0 auto;
+      max-width: 600px;
+    }
+
+    .lyrics-note {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(218, 112, 214, 0.3);
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.6);
+      text-align: center;
+      font-style: italic;
+    }
+
+    /* Artist info section */
+    .artist-info-section {
+      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(148, 0, 211, 0.3);
+      border-radius: 15px;
+      padding: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .info-title {
+      font-family: 'Orbitron', monospace;
+      font-size: 1.3rem;
+      color: #9400d3;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 10px #9400d3;
+    }
+
+    .info-content {
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.8;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid rgba(0, 255, 255, 0.3);
+      color: rgba(255, 255, 255, 0.6);
+      font-family: 'Orbitron', monospace;
+      font-size: 0.8rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+      
+      .artist-name {
+        font-size: 2rem;
+      }
+      
+      .song-title {
+        font-size: 1.5rem;
+      }
+      
+      .album-cover {
+        width: 250px;
+        height: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="../zumic.html" class="back-link">
+        <span>←</span>
+        <span>CD一覧に戻る</span>
+      </a>
+    </nav>
+
+    <header class="artist-header">
+      <h1 class="artist-name">VANSHOOT夜叉丸</h1>
+      <h2 class="song-title">超night快調</h2>
+      <p class="artist-description">
+        レペゼン上原田のニューカマー<br>
+        夜の街を歌った独特な世界観
+      </p>
+    </header>
+
+    <section class="media-section">
+      <div class="album-cover placeholder">
+        <img src="../NIGHT.jpg" alt="VANSHOOT夜叉丸 - 超night快調" onerror="this.style.display='none'; this.parentElement.innerHTML='🌙';">
+      </div>
+      
+      <div class="audio-section">
+        <div class="audio-player">
+          <audio controls preload="metadata">
+            <source src="../night.mp3" type="audio/mpeg">
+            お使いのブラウザでは音声の再生がサポートされていません。
+          </audio>
+        </div>
+        <div class="track-info">
+          <p>Track: 超night快調</p>
+          <p>Artist: VANSHOOT夜叉丸</p>
+          <p>上原田から発信する夜のアンセム</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="lyrics-section">
+      <h3 class="lyrics-title">歌詞</h3>
+      <div class="lyrics-content">ここに歌詞を入力してください
+
+（例）
+夜が来た 街が目覚める
+ネオンサインが呼んでいる
+上原田の路地裏から
+新しい物語が始まる
+
+超night快調
+今夜も絶好調
+月明かりの下で
+自由に踊ろう
+
+VANSHOOT 夜叉丸
+夜の王様
+誰も止められない
+この勢いを</div>
+      <div class="lyrics-note">
+        ※夜の街の魅力と自由を歌った、VANSHOOT夜叉丸の代表作
+      </div>
+    </section>
+
+    <section class="artist-info-section">
+      <h3 class="info-title">アーティスト情報</h3>
+      <div class="info-content">
+        <p>VANSHOOT夜叉丸は、上原田を拠点に活動する新進気鋭のアーティストです。</p>
+        <p>夜の街の雰囲気と独特のビートを融合させた楽曲スタイルで、若い世代から支持を集めています。</p>
+        <p>「超night快調」は、夜の自由と解放感を表現した楽曲として、クラブシーンでも人気を博しています。上原田から全国へ、新しい音楽の波を発信し続けています。</p>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2025 PEH404 × b.p.o Video Store</p>
+      <p>// VANSHOOT夜叉丸 - 超night快調 //</p>
+    </footer>
+  </div>
+
+  <script>
+    // ページ読み込み時のアニメーション
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('VANSHOOT夜叉丸 - 超night快調 ページ読み込み完了');
+      console.log('// 夜の帝王、降臨... //');
+    });
+
+    // オーディオプレイヤーのカスタマイズ
+    const audio = document.querySelector('audio');
+    if (audio) {
+      audio.addEventListener('play', () => {
+        console.log('♪ 再生開始: 超night快調');
+        console.log('🌃 夜が始まる...');
+      });
+      
+      audio.addEventListener('ended', () => {
+        console.log('♪ 再生終了');
+        console.log('🌙 また明日の夜に...');
+      });
+    }
+  </script>
+</body>
+</html>
