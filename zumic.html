@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
@@ -8,228 +7,229 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
 
-- {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  }
+}
 
 body {
-font-family: ‘Noto Sans JP’, sans-serif;
-background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 30%, #16213e 70%, #0f0f23 100%);
-color: #ffffff;
-min-height: 100vh;
-position: relative;
-overflow-x: hidden;
+  font-family: 'Noto Sans JP', sans-serif;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 30%, #16213e 70%, #0f0f23 100%);
+  color: #ffffff;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
 }
 
 /* CRT scanlines effect */
 body::before {
-content: ‘’;
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background: repeating-linear-gradient(
-0deg,
-transparent,
-transparent 2px,
-rgba(0, 255, 100, 0.03) 2px,
-rgba(0, 255, 100, 0.03) 4px
-);
-pointer-events: none;
-z-index: 1000;
-animation: flicker 0.15s infinite linear alternate;
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 100, 0.03) 2px,
+    rgba(0, 255, 100, 0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 1000;
+  animation: flicker 0.15s infinite linear alternate;
 }
 
 @keyframes flicker {
-0% { opacity: 1; }
-100% { opacity: 0.97; }
+  0% { opacity: 1; }
+  100% { opacity: 0.97; }
 }
 
 /* Neon grid background */
 body::after {
-content: ‘’;
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background-image:
-linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
-linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
-background-size: 50px 50px;
-animation: gridMove 20s linear infinite;
-z-index: -1;
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: gridMove 20s linear infinite;
+  z-index: -1;
 }
 
 @keyframes gridMove {
-0% { transform: translate(0, 0); }
-100% { transform: translate(50px, 50px); }
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(50px, 50px); }
 }
 
 .container {
-max-width: 1200px;
-margin: 0 auto;
-padding: 2rem;
-position: relative;
-z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
 }
 
 /* Header styling */
 header {
-text-align: center;
-margin-bottom: 3rem;
-padding: 2rem;
-background: rgba(0, 0, 0, 0.7);
-border: 2px solid #00ffff;
-border-radius: 10px;
-box-shadow:
-0 0 20px rgba(0, 255, 255, 0.3),
-inset 0 0 20px rgba(0, 255, 255, 0.1);
-animation: slideDown 1s ease-out;
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid #00ffff;
+  border-radius: 10px;
+  box-shadow: 
+    0 0 20px rgba(0, 255, 255, 0.3),
+    inset 0 0 20px rgba(0, 255, 255, 0.1);
+  animation: slideDown 1s ease-out;
 }
 
 @keyframes slideDown {
-from {
-opacity: 0;
-transform: translateY(-50px);
-}
-to {
-opacity: 1;
-transform: translateY(0);
-}
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .store-logo {
-font-family: ‘Orbitron’, monospace;
-font-size: clamp(2rem, 6vw, 3.5rem);
-font-weight: 900;
-color: #00ffff;
-text-shadow:
-0 0 10px #00ffff,
-0 0 20px #00ffff,
-0 0 30px #00ffff;
-margin-bottom: 0.5rem;
-letter-spacing: 0.2em;
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 900;
+  color: #00ffff;
+  text-shadow: 
+    0 0 10px #00ffff,
+    0 0 20px #00ffff,
+    0 0 30px #00ffff;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.2em;
 }
 
 .store-subtitle {
-font-family: ‘Orbitron’, monospace;
-font-size: 1.2rem;
-color: #ff00ff;
-margin-bottom: 1rem;
-text-shadow: 0 0 10px #ff00ff;
+  font-family: 'Orbitron', monospace;
+  font-size: 1.2rem;
+  color: #ff00ff;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px #ff00ff;
 }
 
 .store-description {
-font-size: 0.9rem;
-color: rgba(255, 255, 255, 0.8);
-line-height: 1.6;
-max-width: 600px;
-margin: 0 auto;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 /* Artist section */
 .artist-grid {
-display: grid;
-gap: 2rem;
-margin-bottom: 3rem;
+  display: grid;
+  gap: 2rem;
+  margin-bottom: 3rem;
 }
 
 .artist-card {
-background: linear-gradient(145deg, rgba(0, 0, 0, 0.8), rgba(20, 20, 40, 0.8));
-border: 1px solid rgba(0, 255, 255, 0.3);
-border-radius: 15px;
-padding: 2rem;
-position: relative;
-overflow: hidden;
-transition: all 0.4s ease;
-animation: fadeInUp 0.8s ease-out;
-animation-fill-mode: both;
-display: grid;
-grid-template-columns: 120px 1fr;
-gap: 1.5rem;
-align-items: start;
+  background: linear-gradient(145deg, rgba(0, 0, 0, 0.8), rgba(20, 20, 40, 0.8));
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 15px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  animation: fadeInUp 0.8s ease-out;
+  animation-fill-mode: both;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 2rem;
+  align-items: start;
 }
 
 @media (max-width: 768px) {
-.artist-card {
-grid-template-columns: 1fr;
-text-align: center;
-gap: 1rem;
-}
+  .artist-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 1.5rem;
+  }
 }
 
 .album-cover {
-width: 120px;
-height: 120px;
-border-radius: 8px;
-background: linear-gradient(135deg, #1a1a2e, #16213e);
-border: 2px solid rgba(0, 255, 255, 0.3);
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 3rem;
-box-shadow:
-0 4px 15px rgba(0, 0, 0, 0.3),
-0 0 20px rgba(0, 255, 255, 0.1);
-transition: all 0.3s ease;
-position: relative;
-overflow: hidden;
+  width: 200px;
+  height: 200px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  border: 3px solid rgba(0, 255, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.4),
+    0 0 30px rgba(0, 255, 255, 0.2);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .album-cover img {
-width: 100%;
-height: 100%;
-object-fit: cover;
-border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 9px;
 }
 
 .album-cover::before {
-content: ‘’;
-position: absolute;
-top: 0;
-left: -100%;
-width: 100%;
-height: 100%;
-background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-transition: left 0.6s ease;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.8s ease;
 }
 
 .artist-card:hover .album-cover {
-transform: scale(1.05);
-border-color: #00ffff;
-box-shadow:
-0 6px 20px rgba(0, 0, 0, 0.4),
-0 0 30px rgba(0, 255, 255, 0.3);
+  transform: scale(1.08);
+  border-color: #00ffff;
+  box-shadow: 
+    0 12px 35px rgba(0, 0, 0, 0.5),
+    0 0 50px rgba(0, 255, 255, 0.4);
 }
 
 .artist-card:hover .album-cover::before {
-left: 100%;
+  left: 100%;
 }
 
 .album-cover.placeholder {
-background: linear-gradient(135deg,
-rgba(0, 255, 255, 0.1),
-rgba(255, 0, 255, 0.1),
-rgba(0, 255, 255, 0.1)
-);
-animation: gradientPulse 3s ease-in-out infinite;
+  background: linear-gradient(135deg, 
+    rgba(0, 255, 255, 0.15), 
+    rgba(255, 0, 255, 0.15),
+    rgba(0, 255, 255, 0.15)
+  );
+  background-size: 200% 200%;
+  animation: gradientPulse 4s ease-in-out infinite;
 }
 
 @keyframes gradientPulse {
-0%, 100% { background-position: 0% 50%; }
-50% { background-position: 100% 50%; }
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 .card-content {
-display: flex;
-flex-direction: column;
-gap: 1rem;
-min-height: 120px;
-justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-height: 200px;
+  justify-content: space-between;
 }
 
 .artist-card:nth-child(1) { animation-delay: 0.2s; }
@@ -238,217 +238,225 @@ justify-content: space-between;
 .artist-card:nth-child(4) { animation-delay: 0.8s; }
 
 @keyframes fadeInUp {
-from {
-opacity: 0;
-transform: translateY(30px);
-}
-to {
-opacity: 1;
-transform: translateY(0);
-}
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .artist-card::before {
-content: ‘’;
-position: absolute;
-top: 0;
-left: -100%;
-width: 100%;
-height: 2px;
-background: linear-gradient(90deg, transparent, #00ffff, transparent);
-transition: left 0.6s ease;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ffff, transparent);
+  transition: left 0.6s ease;
 }
 
 .artist-card:hover {
-transform: translateY(-5px);
-border-color: #00ffff;
-box-shadow:
-0 15px 30px rgba(0, 0, 0, 0.5),
-0 0 30px rgba(0, 255, 255, 0.2);
+  transform: translateY(-5px);
+  border-color: #00ffff;
+  box-shadow: 
+    0 15px 30px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(0, 255, 255, 0.2);
 }
 
 .artist-card:hover::before {
-left: 100%;
+  left: 100%;
 }
 
 .artist-header {
-display: flex;
-align-items: center;
-gap: 1rem;
-margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .artist-emoji {
-font-size: 2rem;
-filter: drop-shadow(0 0 10px currentColor);
+  font-size: 2rem;
+  filter: drop-shadow(0 0 10px currentColor);
 }
 
 .artist-info h2 {
-font-family: ‘Orbitron’, monospace;
-font-size: 1.4rem;
-color: #00ffff;
-text-shadow: 0 0 10px #00ffff;
-margin-bottom: 0.3rem;
+  font-family: 'Orbitron', monospace;
+  font-size: 1.4rem;
+  color: #00ffff;
+  text-shadow: 0 0 10px #00ffff;
+  margin-bottom: 0.3rem;
 }
 
 .artist-origin {
-font-size: 0.9rem;
-color: #ff00ff;
-text-shadow: 0 0 5px #ff00ff;
+  font-size: 0.9rem;
+  color: #ff00ff;
+  text-shadow: 0 0 5px #ff00ff;
 }
 
 .song-title {
-font-size: 1.2rem;
-font-weight: 600;
-margin-bottom: 1rem;
-color: #ffffff;
-display: flex;
-align-items: center;
-gap: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .song-emoji {
-font-size: 1.5rem;
-animation: pulse 2s infinite;
+  font-size: 1.5rem;
+  animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-0%, 100% { opacity: 1; }
-50% { opacity: 0.7; }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
 }
 
 .audio-container {
-margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 audio {
-width: 100%;
-height: 50px;
-border-radius: 25px;
-background: rgba(0, 0, 0, 0.5);
-border: 1px solid rgba(0, 255, 255, 0.3);
-transition: all 0.3s ease;
+  width: 100%;
+  height: 50px;
+  border-radius: 25px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  transition: all 0.3s ease;
 }
 
 audio:hover {
-border-color: #00ffff;
-box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+  border-color: #00ffff;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
 }
 
 .lyrics-toggle {
-background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(255, 0, 255, 0.2));
-border: 1px solid rgba(0, 255, 255, 0.5);
-color: #fff;
-padding: 0.7rem 1.2rem;
-border-radius: 20px;
-cursor: pointer;
-font-size: 0.85rem;
-font-weight: 500;
-transition: all 0.3s ease;
-backdrop-filter: blur(10px);
-display: flex;
-align-items: center;
-gap: 0.5rem;
-justify-content: center;
-font-family: ‘Orbitron’, monospace;
-text-decoration: none;
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(255, 0, 255, 0.2));
+  border: 1px solid rgba(0, 255, 255, 0.5);
+  color: #fff;
+  padding: 0.7rem 1.2rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+  font-family: 'Orbitron', monospace;
+  text-decoration: none;
 }
 
 .lyrics-toggle:hover {
-background: linear-gradient(135deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 255, 0.3));
-border-color: #00ffff;
-box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
-transform: translateY(-2px);
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 255, 0.3));
+  border-color: #00ffff;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+  transform: translateY(-2px);
 }
 
 /* PEH404 section */
 .peh404-section {
-background: linear-gradient(145deg, rgba(0, 0, 0, 0.9), rgba(20, 0, 20, 0.9));
-border: 2px solid #ff00ff;
-border-radius: 15px;
-padding: 2rem;
-margin-bottom: 3rem;
-text-align: center;
-box-shadow: 0 0 30px rgba(255, 0, 255, 0.2);
+  background: linear-gradient(145deg, rgba(0, 0, 0, 0.9), rgba(20, 0, 20, 0.9));
+  border: 2px solid #ff00ff;
+  border-radius: 15px;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(255, 0, 255, 0.2);
 }
 
 .peh404-title {
-font-family: ‘Orbitron’, monospace;
-font-size: 1.8rem;
-color: #ff00ff;
-text-shadow: 0 0 15px #ff00ff;
-margin-bottom: 1rem;
+  font-family: 'Orbitron', monospace;
+  font-size: 1.8rem;
+  color: #ff00ff;
+  text-shadow: 0 0 15px #ff00ff;
+  margin-bottom: 1rem;
 }
 
 .peh404-motto {
-font-size: 1.1rem;
-color: #00ffff;
-text-shadow: 0 0 10px #00ffff;
-margin-bottom: 1rem;
-font-weight: 600;
+  font-size: 1.1rem;
+  color: #00ffff;
+  text-shadow: 0 0 10px #00ffff;
+  margin-bottom: 1rem;
+  font-weight: 600;
 }
 
 .peh404-description {
-color: rgba(255, 255, 255, 0.8);
-line-height: 1.6;
-margin-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  margin-bottom: 1rem;
 }
 
 .sudo-philosophy {
-font-style: italic;
-color: #ff00ff;
-font-size: 0.95rem;
-margin-top: 1rem;
+  font-style: italic;
+  color: #ff00ff;
+  font-size: 0.95rem;
+  margin-top: 1rem;
 }
 
 footer {
-text-align: center;
-padding: 2rem;
-border-top: 1px solid rgba(0, 255, 255, 0.3);
-color: rgba(255, 255, 255, 0.6);
-font-family: ‘Orbitron’, monospace;
-font-size: 0.8rem;
+  text-align: center;
+  padding: 2rem;
+  border-top: 1px solid rgba(0, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.6);
+  font-family: 'Orbitron', monospace;
+  font-size: 0.8rem;
 }
 
 /* Responsive design */
 @media (max-width: 768px) {
-.container {
-padding: 1rem;
+  .container {
+    padding: 1rem;
+  }
+  
+  .artist-card {
+    padding: 1.5rem;
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  
+  .album-cover {
+    margin: 0 auto;
+    width: 180px;
+    height: 180px;
+  }
+  
+  .artist-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
 }
 
-.artist-card {
-padding: 1.5rem;
-grid-template-columns: 1fr;
-text-align: center;
-gap: 1rem;
-}
-
-.album-cover {
-margin: 0 auto;
-}
-
-.artist-header {
-flex-direction: column;
-text-align: center;
-gap: 0.5rem;
-}
+@media (max-width: 480px) {
+  .album-cover {
+    width: 160px;
+    height: 160px;
+  }
 }
 
 /* Accessibility */
 @media (prefers-reduced-motion: reduce) {
-*, *::before, *::after {
-animation-duration: 0.01ms !important;
-animation-iteration-count: 1 !important;
-transition-duration: 0.01ms !important;
-}
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 audio:focus, .lyrics-toggle:focus {
-outline: 2px solid #00ffff;
-outline-offset: 4px;
+  outline: 2px solid #00ffff;
+  outline-offset: 4px;
 }
-</style>
-
+  </style>
 </head>
 <body>
   <div class="container">
@@ -456,146 +464,133 @@ outline-offset: 4px;
       <div class="store-logo">b.p.o</div>
       <div class="store-subtitle">Video Store - CD Section</div>
       <div class="store-description">
-        表向きはビデオストア。裏には電子空間<br>デプロマシティへの入り口が。
+        表向きはビデオストア。裏には電子空間<br>デプロマシティへの入り口が。<br>
+        <span style="color: #ff00ff; font-weight: 500;">特集：「DEPLOMA」テーマソング集</span>
       </div>
     </header>
 
-```
-<main>
-  <div class="peh404-section">
-    <div class="peh404-title">PEH404 Presents</div>
-    <div class="peh404-motto">世界を書き換えるのは、自分自身だ。</div>
-    <div class="peh404-description">
-      We don't wait for permission. We sudo it.
-    </div>
-    <div class="sudo-philosophy">
-      権限を待つのではなく、自らが管理者となって世界を変革する。
-    </div>
-  </div>
-
-  <div class="artist-grid">
-    <!-- デプロマ系楽曲を最初に配置 -->
-    <div class="artist-card">
-      <div class="album-cover placeholder" id="cover-shutendoji">
-        <img src="deploma-original.jpg" alt="朱天童子 - deploma (Original)" onerror="this.style.display='none'; this.parentElement.innerHTML='👹';">
-      </div>
-      <div class="card-content">
-        <div class="artist-header">
-          <div class="artist-info">
-            <h2>朱天童子</h2>
-            <div class="artist-origin">デプロマ神話の始祖 / Original Artist</div>
+    <main>
+      <div class="artist-grid">
+        <!-- デプロマ系楽曲を最初に配置 -->
+        <div class="artist-card">
+          <div class="album-cover placeholder" id="cover-shutendoji">
+            <img src="deploma.png" alt="朱天童子 - deploma" onerror="this.style.display='none'; this.parentElement.innerHTML='👹';">
+          </div>
+          <div class="card-content">
+            <div class="artist-header">
+              <div class="artist-info">
+                <h2>朱天童子</h2>
+                <div class="artist-origin">伊吹山で活動する杣人の歌い手</div>
+              </div>
+            </div>
+            <div class="song-title">
+              <span class="song-emoji">🔥</span>
+              deploma
+            </div>
+            <div class="audio-container">
+              <audio controls preload="metadata" id="audio-shutendoji">
+                <source src="deploma.mp3" type="audio/mpeg">
+                お使いのブラウザでは音声の再生がサポートされていません。
+              </audio>
+            </div>
+            <button class="lyrics-toggle" onclick="openArtistPage('shutendoji')">
+              <span class="lyrics-icon">📖</span>
+              詳細・歌詞
+            </button>
           </div>
         </div>
-        <div class="song-title">
-          <span class="song-emoji">🔥</span>
-          deploma (Original)
-        </div>
-        <div class="audio-container">
-          <audio controls preload="metadata" id="audio-shutendoji">
-            <source src="deploma.mp3" type="audio/mpeg">
-            お使いのブラウザでは音声の再生がサポートされていません。
-          </audio>
-        </div>
-        <button class="lyrics-toggle" onclick="openArtistPage('shutendoji')">
-          <span class="lyrics-icon">📖</span>
-          詳細・歌詞
-        </button>
-      </div>
-    </div>
 
-    <div class="artist-card">
-      <div class="album-cover placeholder" id="cover-deploma">
-        <img src="DEPLOMA.jpg" alt="THE SUDOERS - DEPLOMA" onerror="this.style.display='none'; this.parentElement.innerHTML='🎓';">
-      </div>
-      <div class="card-content">
-        <div class="artist-header">
-          <div class="artist-info">
-            <h2>THE SUDOERS</h2>
-            <div class="artist-origin">ゴスペルラップ混成音楽集団</div>
+        <div class="artist-card">
+          <div class="album-cover placeholder" id="cover-deploma">
+            <img src="DEPLOMA.jpg" alt="THE SUDOERS - DEPLOMA" onerror="this.style.display='none'; this.parentElement.innerHTML='🎓';">
+          </div>
+          <div class="card-content">
+            <div class="artist-header">
+              <div class="artist-info">
+                <h2>THE SUDOERS</h2>
+                <div class="artist-origin">ゴスペルラップ混成音楽集団</div>
+              </div>
+            </div>
+            <div class="song-title">
+              <span class="song-emoji">⚡</span>
+              DEPLOMA
+            </div>
+            <div class="audio-container">
+              <audio controls preload="metadata" id="audio-deploma">
+                <source src="DEPLOMA.mp3" type="audio/mpeg">
+                お使いのブラウザでは音声の再生がサポートされていません。
+              </audio>
+            </div>
+            <button class="lyrics-toggle" onclick="openArtistPage('deploma')">
+              <span class="lyrics-icon">📖</span>
+              詳細・歌詞
+            </button>
           </div>
         </div>
-        <div class="song-title">
-          <span class="song-emoji">⚡</span>
-          DEPLOMA (Cover)
-        </div>
-        <div class="audio-container">
-          <audio controls preload="metadata" id="audio-deploma">
-            <source src="DEPLOMA.mp3" type="audio/mpeg">
-            お使いのブラウザでは音声の再生がサポートされていません。
-          </audio>
-        </div>
-        <button class="lyrics-toggle" onclick="openArtistPage('deploma')">
-          <span class="lyrics-icon">📖</span>
-          詳細・歌詞
-        </button>
-      </div>
-    </div>
 
-    <!-- その他の楽曲 -->
-    <div class="artist-card">
-      <div class="album-cover placeholder" id="cover-pinopi">
-        <img src="TENKI.JPG" alt="pinOpi - ある日いい天気" onerror="this.style.display='none'; this.parentElement.innerHTML='🌸';">
-      </div>
-      <div class="card-content">
-        <div class="artist-header">
-          <div class="artist-info">
-            <h2>pinOpi</h2>
-            <div class="artist-origin">姫路50万人の妹、花田町のうたっこ</div>
+        <!-- その他の楽曲 -->
+        <div class="artist-card">
+          <div class="album-cover placeholder" id="cover-pinopi">
+            <img src="TENKI.JPG" alt="pinOpi - ある日いい天気" onerror="this.style.display='none'; this.parentElement.innerHTML='🌸';">
+          </div>
+          <div class="card-content">
+            <div class="artist-header">
+              <div class="artist-info">
+                <h2>pinOpi</h2>
+                <div class="artist-origin">姫路50万人の妹、花田町のうたっこ</div>
+              </div>
+            </div>
+            <div class="song-title">
+              <span class="song-emoji">☀️</span>
+              ある日いい天気
+            </div>
+            <div class="audio-container">
+              <audio controls preload="metadata" id="audio-pinopi">
+                <source src="tenki.mp3" type="audio/mpeg">
+                お使いのブラウザでは音声の再生がサポートされていません。
+              </audio>
+            </div>
+            <button class="lyrics-toggle" onclick="openArtistPage('pinopi')">
+              <span class="lyrics-icon">📖</span>
+              詳細・歌詞
+            </button>
           </div>
         </div>
-        <div class="song-title">
-          <span class="song-emoji">☀️</span>
-          ある日いい天気
-        </div>
-        <div class="audio-container">
-          <audio controls preload="metadata" id="audio-pinopi">
-            <source src="tenki.mp3" type="audio/mpeg">
-            お使いのブラウザでは音声の再生がサポートされていません。
-          </audio>
-        </div>
-        <button class="lyrics-toggle" onclick="openArtistPage('pinopi')">
-          <span class="lyrics-icon">📖</span>
-          詳細・歌詞
-        </button>
-      </div>
-    </div>
 
-    <div class="artist-card">
-      <div class="album-cover placeholder" id="cover-yashamaru">
-        <img src="NIGHT.jpg" alt="夜叉丸 - 超night快調" onerror="this.style.display='none'; this.parentElement.innerHTML='🌙';">
-      </div>
-      <div class="card-content">
-        <div class="artist-header">
-          <div class="artist-info">
-            <h2>夜叉丸</h2>
-            <div class="artist-origin">レペゼン上原田のニューカマー</div>
+        <div class="artist-card">
+          <div class="album-cover placeholder" id="cover-yashamaru">
+            <img src="NIGHT.jpg" alt="夜叉丸 - 超night快調" onerror="this.style.display='none'; this.parentElement.innerHTML='🌙';">
+          </div>
+          <div class="card-content">
+            <div class="artist-header">
+              <div class="artist-info">
+                <h2>VANSHOOT夜叉丸</h2>
+                <div class="artist-origin">レペゼン上原田のニューカマー</div>
+              </div>
+            </div>
+            <div class="song-title">
+              <span class="song-emoji">🌃</span>
+              超night快調
+            </div>
+            <div class="audio-container">
+              <audio controls preload="metadata" id="audio-yashamaru">
+                <source src="night.mp3" type="audio/mpeg">
+                お使いのブラウザでは音声の再生がサポートされていません。
+              </audio>
+            </div>
+            <button class="lyrics-toggle" onclick="openArtistPage('yashamaru')">
+              <span class="lyrics-icon">📖</span>
+              詳細・歌詞
+            </button>
           </div>
         </div>
-        <div class="song-title">
-          <span class="song-emoji">🌃</span>
-          超night快調
-        </div>
-        <div class="audio-container">
-          <audio controls preload="metadata" id="audio-yashamaru">
-            <source src="night.mp3" type="audio/mpeg">
-            お使いのブラウザでは音声の再生がサポートされていません。
-          </audio>
-        </div>
-        <button class="lyrics-toggle" onclick="openArtistPage('yashamaru')">
-          <span class="lyrics-icon">📖</span>
-          詳細・歌詞
-        </button>
       </div>
-    </div>
-  </div>
-</main>
+    </main>
 
-<footer>
-  <p>© 2025 PEH404 × b.p.o Video Store</p>
-  <p>// Access granted to DEPLOMA CITY underground network //</p>
-</footer>
-```
-
+    <footer>
+      <p>© 2025 PEH404 × b.p.o Video Store</p>
+      <p>// Access granted to DEPLOMA CITY underground network //</p>
+    </footer>
   </div>
 
   <script>
@@ -626,19 +621,19 @@ outline-offset: 4px;
           info: '姫路50万人の妹、花田町のうたっこ。\n等身大の日常を歌った温かい楽曲が特徴。'
         },
         'yashamaru': {
-          name: '夜叉丸',
+          name: 'VANSHOOT夜叉丸',
           song: '超night快調',
           info: 'レペゼン上原田のニューカマー。\n夜の街を歌った独特な世界観を持つ。'
         },
         'deploma': {
           name: 'THE SUDOERS',
-          song: 'DEPLOMA (Cover)',
-          info: 'ゴスペルラップ混成音楽集団。\n朱天童子の原曲をsudo思想で再解釈したカバー版。'
+          song: 'DEPLOMA',
+          info: 'ゴスペルラップ混成音楽集団。\n「DEPLOMA」オムニバス企画参加作品。\nsudo思想で「卒業・変革」を力強く歌う。'
         },
         'shutendoji': {
           name: '朱天童子',
-          song: 'deploma (Original)',
-          info: 'デプロマ神話の始祖。\n「deploma」の原曲者として、後に様々なアーティストにカバーされる楽曲を生み出した。'
+          song: 'deploma',
+          info: '伊吹山で活動する杣人の歌い手。\n「DEPLOMA」オムニバス企画参加作品。\n山の自然と共に生きる視点から「卒業・変革」を歌う。'
         }
       };
       
@@ -665,7 +660,7 @@ outline-offset: 4px;
       // CRTエフェクト開始
       randomizeCRTEffect();
       
-      console.log('// Welcome to b.p.o CD Section. DEPLOMA mythology awaits. //');
+      console.log('// Welcome to b.p.o CD Section. DEPLOMA anthology awaits. //');
     });
   </script>
 
